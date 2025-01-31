@@ -1,0 +1,82 @@
+<!-- index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- AI-DevOps Guardian -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4">🔒 AI-DevOps Guardian</h2>
+        <p class="mb-4">Secure your DevOps configurations with AI-powered analysis.</p>
+        
+        <form id="guardianForm" class="space-y-4">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6">
+                <input type="file" id="configFile" class="hidden">
+                <label for="configFile" class="cursor-pointer block text-center">
+                    <span class="text-blue-500">Upload configuration file</span>
+                    <p class="text-sm text-gray-500 mt-2">Supports Dockerfile, YAML, JSON, etc.</p>
+                </label>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                🔍 Scan for Misconfigurations
+            </button>
+        </form>
+        
+        <div id="guardianResult" class="mt-4 hidden">
+            <h3 class="font-bold mb-2">Analysis Results:</h3>
+            <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"></pre>
+        </div>
+    </div>
+
+    <!-- Kubernetes YAML Generator -->
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-bold mb-4">⚙️ Kubernetes YAML Generator</h2>
+        <p class="mb-4">Generate Kubernetes configurations from your Dockerfile</p>
+        
+        <form id="k8sForm" class="space-y-4">
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6">
+                <input type="file" id="dockerFile" class="hidden">
+                <label for="dockerFile" class="cursor-pointer block text-center">
+                    <span class="text-blue-500">Upload Dockerfile</span>
+                    <p class="text-sm text-gray-500 mt-2">Must be named 'Dockerfile'</p>
+                </label>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <input type="text" id="imageName" placeholder="Image Name" class="border p-2 rounded">
+                <input type="text" id="hostName" placeholder="Host Name" class="border p-2 rounded">
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                Generate Kubernetes Files
+            </button>
+        </form>
+        
+        <div id="k8sResult" class="mt-4 hidden">
+            <h3 class="font-bold mb-2">Generated YAML Files:</h3>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold">Deployment</h4>
+                    <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"></pre>
+                    <button class="download-yaml mt-2 bg-green-500 text-white px-4 py-1 rounded" data-type="deployment">
+                        ⬇️ Download
+                    </button>
+                </div>
+                <div>
+                    <h4 class="font-bold">Service</h4>
+                    <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"></pre>
+                    <button class="download-yaml mt-2 bg-green-500 text-white px-4 py-1 rounded" data-type="service">
+                        ⬇️ Download
+                    </button>
+                </div>
+                <div>
+                    <h4 class="font-bold">Ingress</h4>
+                    <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto"></pre>
+                    <button class="download-yaml mt-2 bg-green-500 text-white px-4 py-1 rounded" data-type="ingress">
+                        ⬇️ Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
